@@ -42,10 +42,3 @@ output "firewall_rule_allow_inbound_health_check_id" {
   value = "${element(concat(google_compute_firewall.allow_inbound_health_check.*.id, list("")), 0)}"
 }
 
-#output "bucket_name_url" {
-#  value = "${google_storage_bucket.vault_storage_backend.self_link}"
-#}
-
-#output "bucket_name_id" {
-#  value = "${google_storage_bucket.vault_storage_backend.id}"
-#}

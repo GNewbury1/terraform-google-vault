@@ -217,23 +217,6 @@ resource "google_compute_firewall" "allow_inbound_health_check" {
 # CREATE A GOOGLE STORAGE BUCKET TO USE AS A VAULT STORAGE BACKEND
 # ---------------------------------------------------------------------------------------------------------------------
 
-#resource "google_storage_bucket" "vault_storage_backend" {
-#  name = "${var.cluster_name}"
-#  location = "${var.gcs_bucket_location}"
-#  storage_class = "${var.gcs_bucket_storage_class}"
-#
-#  # In prod, the Storage Bucket should NEVER be emptied and deleted via Terraform unless you know exactly what you're doing.
-#  # However, for testing purposes, it's often convenient to destroy a non-empty Storage Bucket.
-#  force_destroy = "${var.gcs_bucket_force_destroy}"
-#}
-
-# ACLs are now deprecated as a way to secure a GCS Bucket (https://goo.gl/PgDCYb0), however the Terraform Google Provider
-# does not yet expose a way to attach an IAM Policy to a Google Bucket so we resort to using the Bucket ACL in case users
-# of this module wish to limit Bucket permissions via Terraform.
-#resource "google_storage_bucket_acl" "vault_storage_backend" {
-#  bucket = "${google_storage_bucket.vault_storage_backend.name}"
-#  predefined_acl = "${var.gcs_bucket_predefined_acl}"
-#}
 
 # ---------------------------------------------------------------------------------------------------------------------
 # CONVENIENCE VARIABLES
